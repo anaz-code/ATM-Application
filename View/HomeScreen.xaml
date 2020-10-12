@@ -1,0 +1,60 @@
+﻿<Window x:Class="ATMApp.View.HomeScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ATMApp.View" xmlns:local1="clr-namespace:ATMApp"
+        mc:Ignorable="d"
+        Title="HomeScreen" Height="450" Width="800">
+    
+    <Window.Resources>
+        <Style TargetType="Button" x:Key="btn">
+            <Setter Property="Margin" Value="0,4"/>
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="Background" Value="Lavender"/>
+        </Style>
+        <Style TargetType="Button" x:Key="btnNumbers">
+            <Setter Property="Width" Value="50"/>
+            <Setter Property="Height" Value="38"/>
+            <Setter Property="Margin" Value="7"/>
+            <Setter Property="Width" Value="50"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Label Content="{Binding Name}" Height="35" Width="130" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10" Background="DarkOrange"/>
+
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Height="200" Margin="10,34,0,0" Width="122">
+            <Button Command="{Binding CmdCheckBalance}" Style="{StaticResource btn}" Content="Check Balance"></Button>
+            <Button Command="{Binding CmdWithdraw}" Style="{StaticResource btn}" Content="WithDraw"></Button>
+            <Button Command="{Binding CmdDeposit}" Style="{StaticResource btn}" Content="Deposit"></Button>
+            <Button Command="{Binding CmdDetails}" Style="{StaticResource btn}" Content="Change Details"></Button>
+            <Button Command="{Binding CmdChangePin}" Style="{StaticResource btn}" Content="Change PIN"/>
+            <Button Command="{Binding CmdTransactions}" Style="{StaticResource btn}" Content="Transactions"/>
+        </StackPanel>
+        <StackPanel Background="AliceBlue" Width="200" Height="290" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="150,0,20,0">
+            <Label Content="Enter your PIN" Margin="10" FontSize="18"/>
+            <local1:NumericTextBox MaxLength="4" Width="180" Text="{Binding Pin,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Height="30" IsReadOnly="True"/>
+            <WrapPanel  Orientation="Horizontal">
+                <Button Style="{StaticResource btnNumbers}" Content="1" Command="{Binding CmdCheckPin}" CommandParameter="{Binding Path=Content,RelativeSource={RelativeSource self}}"/>
+                <Button Style="{StaticResource btnNumbers}" Content="2" Command="{Binding CmdCheckPin}" CommandParameter="{Binding Path=Content,RelativeSource={RelativeSource self}}"/>
+                <Button Style="{StaticResource btnNumbers}" Content="3" Command="{Binding CmdCheckPin}" CommandParameter="{Binding Path=Content,RelativeSource={RelativeSource self}}"/>
+                <Button Style="{StaticResource btnNumbers}" Content="4" Command="{Binding CmdCheckPin}" CommandParameter="{Binding Path=Content,RelativeSource={RelativeSource self}}"/>
+                <Button Style="{StaticResource btnNumbers}" Content="5" Command="{Binding CmdCheckPin}" CommandParameter="{Binding Path=Content,RelativeSource={RelativeSource self}}"/>
+                <Button Style="{StaticResource btnNumbers}" Content="6" Command="{Binding CmdCheckPin}" CommandParameter="{Binding Path=Content,RelativeSource={RelativeSource self}}"/>
+                <Button Style="{StaticResource btnNumbers}" Content="7" Command="{Binding CmdCheckPin}" CommandParameter="{Binding Path=Content,RelativeSource={RelativeSource self}}"/>
+                <Button Style="{StaticResource btnNumbers}" Content="8" Command="{Binding CmdCheckPin}" CommandParameter="{Binding Path=Content,RelativeSource={RelativeSource self}}"/>
+                <Button Style="{StaticResource btnNumbers}" Content="9" Command="{Binding CmdCheckPin}" CommandParameter="{Binding Path=Content,RelativeSource={RelativeSource self}}"/>
+                <Button Style="{StaticResource btnNumbers}" Content="0" Command="{Binding CmdCheckPin}" CommandParameter="{Binding Path=Content,RelativeSource={RelativeSource self}}"/>
+                <Button Style="{StaticResource btnNumbers}" Content="Clear" Command="{Binding CmdClear}" CommandParameter="{Binding Path=Content,RelativeSource={RelativeSource self}}"/>
+
+            </WrapPanel>
+          </StackPanel>
+        <StackPanel Width="200" Height="100" Margin="360,154,238.6,166" HorizontalAlignment="Center">
+            <Label Content="Enter the amount" Margin="10" FontSize="18"/>
+            <local1:NumericTextBox Margin="10" Text="{Binding Amount,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Height="30"/>
+        </StackPanel>
+
+
+
+    </Grid>
+</Window>
